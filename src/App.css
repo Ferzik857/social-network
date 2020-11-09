@@ -11,18 +11,8 @@ grid-template-rows: 60px 1fr;
 grid-template-columns: 2fr 10fr;
 /*grid-gap: 10px;*/
 }
-.header{
-  grid-area: h;
-  background-color: lawngreen;
+.app-warpper-content{
+  grid-area: c;
+  background-color: lightsalmon;
 }
-.header img {
-  width: 20px;
-}
-.nav{
- grid-area: n;
- background-color: lightgreen;
-}
-.content{
-grid-area: c;
-background-color: lightsalmon;
-}
+
