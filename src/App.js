@@ -9,6 +9,7 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
+import Friends from './components/Friends/Friends';
 
 const App = (props)=> {
  
@@ -19,11 +20,12 @@ const App = (props)=> {
 <Header/>
 <Navbar/>
 <div className="app-warpper-content">
-  <Route path="/Profile" render={() => <Profile PostData={props.PostData}/>}/>
+  <Route path="/Profile" render={() => <Profile PostData={props.PostData} addPost={props.addPost}/>}/>
   <Route path="/Dialogs" render={() => <Dialogs messagesData={props.messagesData} dialogsData={props.dialogsData}/>}/>
   <Route path="/News" render={News}/>
   <Route path="/Music" render={Music}/>
-  <Route path="/Settings" crender={Settings}/>
+  <Route path="/Settings" render={Settings}/>
+  <Route path="/Friends" render={Friends}/>
 </div>
     </div>
     </BrowserRouter>

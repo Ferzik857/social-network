@@ -14,5 +14,6 @@ grid-template-columns: 2fr 10fr;
 .app-warpper-content{
   grid-area: c;
   background-color: lightsalmon;
+  
 }
 
