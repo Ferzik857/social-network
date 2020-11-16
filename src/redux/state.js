@@ -1,3 +1,4 @@
+import { rerenderEntireTree } from '../render';
 let status = {
      PostData:[
     { id:1, message:"hi, how are you ?",likesCount: 12}, 
@@ -16,15 +17,22 @@ let status = {
     { id:2, name:"Sasha"}, 
     { id:3, name:"Masha"}, 
     { id:4, name:"Yra"}  
-  ]};
+  ],
+  newPostText:""};
 
- export let addPost = (postMessage) =>{
+ export let addPost = () =>{
       let newPost = {
           id: 5,
-          message: postMessage,
+          message: status.newPostText,
           likesCount:0
       }
       status.PostData.push(newPost);
+      status.newPostText = "";
+      rerenderEntireTree(status);
   }
+  export let updateNewPostText = (newText) =>{
+    status.newPostText = newText;
+    rerenderEntireTree(status);
+}
 
   export default status;
