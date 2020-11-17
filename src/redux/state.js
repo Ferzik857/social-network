@@ -1,4 +1,4 @@
-import { rerenderEntireTree } from '../render';
+let rerenderEntireTree =()=>{}
 let status = {
      PostData:[
     { id:1, message:"hi, how are you ?",likesCount: 12}, 
@@ -20,7 +20,7 @@ let status = {
   ],
   newPostText:""};
 
- export let addPost = () =>{
+ export const addPost = () =>{
       let newPost = {
           id: 5,
           message: status.newPostText,
@@ -29,10 +29,12 @@ let status = {
       status.PostData.push(newPost);
       status.newPostText = "";
       rerenderEntireTree(status);
-  }
-  export let updateNewPostText = (newText) =>{
+    }
+  export const updateNewPostText = (newText) =>{
     status.newPostText = newText;
     rerenderEntireTree(status);
 }
-
-  export default status;
+export const subscribe = (observer)=>{
+  rerenderEntireTree = observer;
+} 
+  export default status; 
