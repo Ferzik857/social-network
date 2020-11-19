@@ -18,7 +18,9 @@ let store = {
    { id:3, name:"Masha"}, 
    { id:4, name:"Yra"}  
  ],
- newPostText:""},
+ newPostText:"",
+ newMessageBody:""
+},
  getState(){
    return this._state;
  },
@@ -40,6 +42,14 @@ if(action.type === 'ADD-POST'){
     this._callSubscriber(this._state);
   }else if (action.type === 'UPDATE-NEW-POST-TEXT'){
     this._state.newPostText = action.newText;
+    this._callSubscriber(this._state);
+  }else if (action.type === 'UPDATE-NEW-MESSAGE-BODY'){
+    this._state.newMessageBody = action.body;
+    this._callSubscriber(this._state);
+  }else if (action.type === 'SEND-MESSAGE'){
+    let body = this._state.newMessageBody;
+    this._state.newMessageBody = "";
+    this._state.messagesData.push({id: 6, message: body});
     this._callSubscriber(this._state);
   }
 }

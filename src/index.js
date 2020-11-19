@@ -11,7 +11,7 @@ import ReactDOM from "react-dom";
 let rerenderEntireTree = (status)=>{
     ReactDOM.render(
       <React.StrictMode>
-        <App PostData={store._state.PostData} dialogsData={store._state.dialogsData} messagesData={store._state.messagesData} dispatch={store.dispatch.bind(store)} newPostText={store._state.newPostText}/>
+        <App PostData={store._state.PostData} dialogsData={store._state.dialogsData} messagesData={store._state.messagesData} dispatch={store.dispatch.bind(store)} newPostText={store._state.newPostText} newMessageBody={store._state.newMessageBody}/>
       </React.StrictMode>,
       document.getElementById('root')
     );

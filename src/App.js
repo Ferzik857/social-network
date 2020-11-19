@@ -21,7 +21,7 @@ const App = (props)=> {
 <Navbar/>
 <div className="app-warpper-content">
   <Route path="/Profile" render={() => <Profile PostData={props.PostData}  newPostText={props.newPostText} dispatch={props.dispatch} />}/>
-  <Route path="/Dialogs" render={() => <Dialogs messagesData={props.messagesData} dialogsData={props.dialogsData} />}/>
+  <Route path="/Dialogs" render={() => <Dialogs messagesData={props.messagesData} dialogsData={props.dialogsData}  newMessageBody={props.newMessageBody} dispatch={props.dispatch} />}/>
   <Route path="/News" render={News}/>
   <Route path="/Music" render={Music}/>
   <Route path="/Settings" render={Settings}/>
