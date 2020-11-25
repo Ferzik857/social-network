@@ -12,7 +12,12 @@ let rerenderEntireTree = (status)=>{
 
     ReactDOM.render(
       <React.StrictMode>
-        <App PostData={status.allPosts.PostData} dialogsData={status.allMessages.dialogsData} messagesData={status.allMessages.messagesData} dispatch={store.dispatch.bind(store)} newPostText={status.allPosts.newPostText} newMessageBody={status.allMessages.newMessageBody}/>
+        <App PostData={status.allPosts.PostData} 
+        dialogsData={status.allMessages.dialogsData}
+        messagesData={status.allMessages.messagesData}
+        dispatch={store.dispatch.bind(store)} 
+        newPostText={status.allPosts.newPostText} 
+        newMessageBody={status.allMessages.newMessageBody}/>
       </React.StrictMode>,
       document.getElementById('root')
     );

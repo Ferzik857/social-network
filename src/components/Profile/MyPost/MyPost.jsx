@@ -5,23 +5,17 @@ import React, { createRef } from 'react';
 
 
 const MyPost = (props) => {
- 
- let v = React.createRef();
 
-  let addPost = ()=>{
-    
-    props.dispatch({type:'ADD-POST'});
-    
+  let v = React.createRef();
 
-  }
-
-let onPostChange =() => {
+  let onPostChange = () => {
   let text = v.current.value;
-  props.dispatch({type:'UPDATE-NEW-POST-TEXT', newText: text});
-}
+  props.onPostChange (text);
+  }
+  let addPost = ()=>props.addPost();
+  
 
-
-let postsElements = props.PostData.map(e=><Post  message={e.message} like={e.likesCount}/>)
+let postsElements = props.PostData.map(e=><Post message={e.message} like={e.likesCount}/>)
     return <div className={a.postsBlock}>
     <h3>My posts</h3>
     <div> 

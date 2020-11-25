@@ -1,4 +1,3 @@
-
 import DialogItem from './DialogItem/DialogItem';
 import  b from './Dialogs.module.css'
 import Message from './Message/Message';
@@ -19,11 +18,11 @@ const Dialogs = (props) => {
 
      let newMessageBody = props.newMessageBody;
      let onSendMessageClick=()=>{
-      props.dispatch({type:'SEND-MESSAGE'})
+      props.onSendMessageClick()
      }
      let onNewMessageChange=(e)=>{
      let body = e.target.value;
-     props.dispatch({type:'UPDATE-NEW-MESSAGE-BODY', body:body})
+     props.onNewMessageChange(body)
      }
 
    return <div className={b.dialog}>
