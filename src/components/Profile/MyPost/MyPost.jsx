@@ -1,6 +1,6 @@
 import  a from './MyPost.module.css'
 import Post from './Post/Post'
-import React, { createRef } from 'react';
+import React from 'react';
 
 
 
