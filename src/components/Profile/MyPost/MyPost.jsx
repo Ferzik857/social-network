@@ -4,6 +4,7 @@ import React from 'react';
 
 
 
+
 const MyPost = (props) => {
 
   let v = React.createRef();

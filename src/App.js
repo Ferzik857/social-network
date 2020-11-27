@@ -14,20 +14,14 @@ import DialogsContainer from './components/Dialogs/DialogsContainer';
 
 const App = (props)=> {
  
-
   return (
     <BrowserRouter>
     <div className="app-warpper">
 <Header/>
 <Navbar/>
 <div className="app-warpper-content">
-  <Route path="/Profile" render={() => <Profile PostData={props.PostData} 
-   newPostText={props.newPostText}
-    dispatch={props.dispatch} />}/>
-  <Route path="/Dialogs" render={() => <DialogsContainer messagesData={props.messagesData}
-   dialogsData={props.dialogsData}  
-   newMessageBody={props.newMessageBody}
-    dispatch={props.dispatch} />}/>
+  <Route path="/Profile" render={() => <Profile />}/>
+  <Route path="/Dialogs" render={() => <DialogsContainer />}/>
   <Route path="/News" render={News}/>
   <Route path="/Music" render={Music}/>
   <Route path="/Settings" render={Settings}/>

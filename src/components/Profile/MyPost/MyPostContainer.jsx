@@ -1,19 +1,26 @@
+import { connect } from 'react-redux';
 import MyPost from './MyPost';
 
 
 
-const MyPostContainer = (props) => {
-  
-  let addPost = ()=>props.dispatch({type:'ADD-POST'});
-  let onPostChange = (text) => {
-  props.dispatch({type:'UPDATE-NEW-POST-TEXT', newText: text});
+let f1 =(store)=>{
+  return {
+    PostData:store.allPosts.PostData,
+    newPostText:store.allPosts.newPostText
   }
- 
-    return <MyPost addPost={addPost} 
-    onPostChange={onPostChange} 
-    PostData={props.PostData}
-    newPostText={props.newPostText}/>
-      
-}  
+ }
+ let f2 =(dispatch)=>{
+ return {
+  addPost: ()=>{ dispatch({type:'ADD-POST'})},
+  onPostChange: (text) =>{dispatch({type:'UPDATE-NEW-POST-TEXT', newText: text})}
+ }
+ }
+
+ const MyPostContainer = connect(f1,f2)(MyPost);
+
+
+
+
+
 
 export default  MyPostContainer;

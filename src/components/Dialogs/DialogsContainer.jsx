@@ -1,27 +1,22 @@
 
+import { connect } from 'react-redux';
 import Dialogs from './Dialogs';
 
 
-
-
-const DialogsContainer = (props) => {
-
-  let onSendMessageClick=()=>{
-    props.dispatch({type:'SEND-MESSAGE'})
-   }
-   let onNewMessageChange=(body)=>{
-   
-   props.dispatch({type:'UPDATE-NEW-MESSAGE-BODY', body:body})
-   }
-
-
-   
-   return <Dialogs messagesData={props.messagesData}
-   dialogsData={props.dialogsData}  
-   newMessageBody={props.newMessageBody}
-   onNewMessageChange={onNewMessageChange}
-   onSendMessageClick={onSendMessageClick}
-    />
+let f1 =(store)=>{
+ return {
+  messagesData:store.allMessages.messagesData,
+  dialogsData:store.allMessages.dialogsData,
+  newMessageBody:store.allMessages.newMessageBody
 }
+}
+let f2 =(dispatch)=>{
+return {
+  onNewMessageChange: (body)=>{ dispatch({type:'UPDATE-NEW-MESSAGE-BODY', body:body})},
+  onSendMessageClick: ()=>{ dispatch({type:'SEND-MESSAGE'})}
+}
+}
+
+const DialogsContainer = connect(f1,f2)(Dialogs);
 
 export default  DialogsContainer;
