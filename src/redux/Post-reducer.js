@@ -16,11 +16,16 @@ const postReducer = (state = initialState, action)=>{
             message: state.newPostText,
             likesCount:0
         };
-        state.PostData.push(newPost);
-        state.newPostText = "";
+        let stateCopy = {...state};
+        stateCopy.PostData = [...state.PostData];
+        stateCopy.PostData.push(newPost);
+        stateCopy.newPostText = "";
+        return stateCopy;
        
       }else if (action.type === 'UPDATE-NEW-POST-TEXT'){
-        state.newPostText = action.newText;
+         let steteCopy = {...state};
+        steteCopy.newPostText = action.newText;
+        return steteCopy;
         
       }
       return state;

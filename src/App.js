@@ -11,6 +11,7 @@ import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import Friends from './components/Friends/Friends';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
+import Users from './components/Users/Users';
 
 const App = (props)=> {
  
@@ -26,7 +27,8 @@ const App = (props)=> {
   <Route path="/Music" render={Music}/>
   <Route path="/Settings" render={Settings}/>
   <Route path="/Friends" render={Friends}/>
-</div>
+  <Route path="/users" render={() => <Users />}/>
+    </div>
     </div>
     </BrowserRouter>
   );
