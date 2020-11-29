@@ -3,15 +3,13 @@ import './App.css';
 import Header from './components/Heder/Header';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
-
-
 import {BrowserRouter, Route} from 'react-router-dom';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import Friends from './components/Friends/Friends';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
-import Users from './components/Users/Users';
+import UsersContainer from './components/Users/UsersContainer';
 
 const App = (props)=> {
  
@@ -27,7 +25,7 @@ const App = (props)=> {
   <Route path="/Music" render={Music}/>
   <Route path="/Settings" render={Settings}/>
   <Route path="/Friends" render={Friends}/>
-  <Route path="/users" render={() => <Users />}/>
+  <Route path="/users" render={() => <UsersContainer />}/>
     </div>
     </div>
     </BrowserRouter>
