@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import Users from "./Users";
 
+
 let f1 = (state)=>{
 return{
     users:state.usersPage.users
@@ -14,7 +15,7 @@ let f2 = (dispatch)=>{
         unfollow: (userId)=> {
             dispatch({type:"UNFOLLOW", userId: userId})
         },
-        setUsers:(userId)=> {
+        setUsers:(users)=> {
             dispatch({type:"SET_USERS", users: users})}
     }
 }
