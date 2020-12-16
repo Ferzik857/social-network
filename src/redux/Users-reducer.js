@@ -2,7 +2,8 @@ let initialState =  {
   users:[],
   pageSize: 5,
   totalUsersCount:0,
-  currentPage:1
+  currentPage:1,
+  isFetching: true
 };
 
 
@@ -33,6 +34,9 @@ if (action.type == "SET_TOTAL_USERS_COUNT"){
 
 if (action.type == "SET_CURRENT_PAGE"){
   return {...state, currentPage: action.currentPage}
+} 
+if (action.type == "TOGGLE_IS_FETCHING"){
+  return {...state, isFetching: action.isFetching}
 } 
 return state
       
