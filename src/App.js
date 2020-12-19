@@ -1,6 +1,5 @@
 import logo from './logo.svg';
 import './App.css';
-import Header from './components/Heder/Header';
 import Navbar from './components/Navbar/Navbar';
 import {BrowserRouter, Route} from 'react-router-dom';
 import News from './components/News/News';
@@ -10,13 +9,14 @@ import Friends from './components/Friends/Friends';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileCountainer from './components/Profile/ProfileCountainer';
+import HeaderContainer from './components/Heder/HeaderContainer';
 
 const App = (props)=> {
  
   return (
     <BrowserRouter>
     <div className="app-warpper">
-<Header/>
+<HeaderContainer/>
 <Navbar/>
 <div className="app-warpper-content">
   <Route path="/Profile/:userId?" render={() => <ProfileCountainer />}/>
