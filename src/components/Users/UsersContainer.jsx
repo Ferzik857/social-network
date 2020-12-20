@@ -3,16 +3,16 @@ import Users from "./Users";
 import * as axios from "axios";
 import React from 'react';
 import Preloader from "../common/Preloader/Preloader";
+import { userAPI } from "../../api/api";
 
 class UsersApi extends React.Component {
 
     componentDidMount(){
         this.props.toggleIsFetching(true);
-          axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-          .then(response =>{ 
+        userAPI.getUsers(this.props.currentPage,this.props.pageSize).then(data =>{ 
             this.props.toggleIsFetching(false);
-              this.props.setUsers(response.data.items);
-              this.props.setTotalUsersCount(response.data.totalCount);
+              this.props.setUsers(data.items);
+              this.props.setTotalUsersCount(data.totalCount);
           }); }
   
   
@@ -20,10 +20,10 @@ class UsersApi extends React.Component {
   onPageChanged = (pageNumber)=>{
       this.props.setCurrentPage(pageNumber);
       this.props.toggleIsFetching(true);
-      axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
-          .then(response =>{ 
+      userAPI.getUsers(pageNumber,this.props.pageSize)
+          .then(data =>{ 
             this.props.toggleIsFetching(false);
-              this.props.setUsers(response.data.items)
+              this.props.setUsers(data.items)
           });
   }
   
@@ -37,7 +37,9 @@ class UsersApi extends React.Component {
  follow = {this.props.follow}
  totalUsersCount = {this.props.totalUsersCount} 
  pageSize = {this.props.pageSize}
- users = {this.props.users} />
+ users = {this.props.users} 
+ toggleFollowingInProgress={this.props.toggleFollowingInProgress}
+ followingInProgress={this.props.followingInProgress}/>
  </>
      } 
      
@@ -61,7 +63,8 @@ return{
     pageSize:state.usersPage.pageSize,
     totalUsersCount:state.usersPage.totalUsersCount,
     currentPage:state.usersPage.currentPage,
-    isFetching:state.usersPage.isFetching
+    isFetching:state.usersPage.isFetching,
+    followingInProgress:state.usersPage.followingInProgress
 }
 }
 let f2 = (dispatch)=>{
@@ -82,7 +85,10 @@ let f2 = (dispatch)=>{
        }, 
        toggleIsFetching: (isFetching)=>{
            dispatch({type:"TOGGLE_IS_FETCHING", isFetching:isFetching})
-       }     
+       }, 
+       toggleFollowingInProgress: (isFetching, userId)=>{
+        dispatch({type:"TOGGLE_IS_FOLLOWING_PROGRESS", isFetching:isFetching,userId:userId})
+    }   
     }
 }
 

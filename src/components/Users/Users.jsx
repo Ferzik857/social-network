@@ -29,8 +29,27 @@ for(let i =1; i <= pagesCount; i++){
                  </div>
                  <div>
         {u.followed ? 
-        <button onClick={()=> {props.unfollow(u.id)}}>UnFollow</button> 
-        : <button onClick={()=> {props.follow(u.id)}}>Follow</button>}  
+        <button disabled={props.followingInProgress.some(id =>id === u.id)} onClick={()=> {
+            props.toggleFollowingInProgress(true,u.id);
+            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,{withCredentials: true, headers: {"API-KEY": "4473d935-0622-46eb-945e-aede32cbb4f2"}})
+            .then(response =>{ 
+            if (response.data.resultCode === 0) {props.unfollow(u.id)}
+            props.toggleFollowingInProgress(false,u.id);
+            });
+           
+        
+        }}>UnFollow</button> 
+        : <button disabled={props.followingInProgress.some(id =>id === u.id)} onClick={()=> {
+            props.toggleFollowingInProgress(true,u.id);
+            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,{},{withCredentials: true, headers: {"API-KEY": "4473d935-0622-46eb-945e-aede32cbb4f2"}})
+            .then(response =>{ 
+            if (response.data.resultCode === 0) {props.follow(u.id)}
+            props.toggleFollowingInProgress(false,u.id);
+            });
+
+            }
+           
+           }>Follow</button>}  
                  </div>
              </span>
              <span>
