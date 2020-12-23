@@ -7,7 +7,8 @@ let f1 =(store)=>{
  return {
   messagesData:store.allMessages.messagesData,
   dialogsData:store.allMessages.dialogsData,
-  newMessageBody:store.allMessages.newMessageBody
+  newMessageBody:store.allMessages.newMessageBody,
+  isAuth: store.auth.isAuth
 }
 }
 let f2 =(dispatch)=>{
