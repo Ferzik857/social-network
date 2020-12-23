@@ -1,5 +1,7 @@
 
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import Dialogs from './Dialogs';
 
 
@@ -8,7 +10,7 @@ let f1 =(store)=>{
   messagesData:store.allMessages.messagesData,
   dialogsData:store.allMessages.dialogsData,
   newMessageBody:store.allMessages.newMessageBody,
-  isAuth: store.auth.isAuth
+  
 }
 }
 let f2 =(dispatch)=>{
@@ -18,6 +20,10 @@ return {
 }
 }
 
-const DialogsContainer = connect(f1,f2)(Dialogs);
+let AuthRedirectComponent = withAuthRedirect(Dialogs)
+
+
+
+const DialogsContainer = connect(f1,f2)(AuthRedirectComponent);
 
 export default  DialogsContainer;

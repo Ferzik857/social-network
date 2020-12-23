@@ -4,7 +4,7 @@ import React from 'react';
 import Preloader from "../common/Preloader/Preloader";
 import { userAPI } from "../../api/api";
 import { follow, getUsersThunkCreator, setCurrentPage, toggleFollowingInProgress, unfollow } from "../../redux/Users-reducer";
-
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 
 
 
@@ -73,4 +73,7 @@ return{
 }*/
 
 
-export default connect(f1,{follow, getUsers: getUsersThunkCreator, setCurrentPage,  toggleFollowingInProgress, unfollow })(UsersApi)
+
+let withRedirect = withAuthRedirect(UsersApi);
+
+export default connect(f1,{follow, getUsers: getUsersThunkCreator, setCurrentPage,  toggleFollowingInProgress, unfollow })(withRedirect)
