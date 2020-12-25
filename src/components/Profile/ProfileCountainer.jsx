@@ -28,5 +28,5 @@ let f2 = (state) => ({profile: state.allPosts.profile})
 export default  compose(
     connect(f2, {getUserProfile}),
     withRouter,
-    withAuthRedirect   
+     
 )(ProfileCountainer);
