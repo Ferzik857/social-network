@@ -4,6 +4,7 @@ import { getUserProfile } from '../../redux/Post-reducer';
 import Profile from './Profile'
 import { Redirect, withRouter } from 'react-router-dom';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 
 
@@ -19,11 +20,13 @@ class ProfileCountainer extends React.Component {
     return <Profile {...this.props} profile={this.props.profile}/>
    }
 }
-let AuthRedirectComponent = withAuthRedirect(ProfileCountainer);
-
 
 let f2 = (state) => ({profile: state.allPosts.profile})
-let WithUrlDataContainerComponrnt = withRouter(AuthRedirectComponent);
 
 
-export default  connect(f2, {getUserProfile}) (WithUrlDataContainerComponrnt);
+
+export default  compose(
+    connect(f2, {getUserProfile}),
+    withRouter,
+    withAuthRedirect   
+)(ProfileCountainer);
