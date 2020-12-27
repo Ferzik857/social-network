@@ -17,9 +17,10 @@ class ProfileCountainer extends React.Component {
        
     }
    render(){
-    
+   
     return <Profile {...this.props} profile={this.props.profile} status= {this.props.status} updateStatus={this.props.updateStatus}/>
-   }
+   
+}
 }
 
 let f2 = (state) => ({
@@ -30,7 +31,7 @@ let f2 = (state) => ({
 
 
 export default  compose(
-    connect(f2, {getUserProfile, getStatus,updateStatus}),
+    connect(f2, {getUserProfile, getStatus, updateStatus}),
     withRouter,
      
 )(ProfileCountainer);

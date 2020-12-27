@@ -39,13 +39,13 @@ const postReducer = (state = initialState, action)=>{
         steteCopy.newPostText = action.newText;
         return steteCopy;
       }
-      if (action.type === 'SET_USER_PROFILE'){
+      if (action.type === SET_USER_PROFILE){
        
        return {...state, profile: action.profile};
      }
      if (action.type === SET_STATUS){
        
-      return {...state, satus: action.satus};
+      return {...state, status: action.status};
     }
       return state;
     }
