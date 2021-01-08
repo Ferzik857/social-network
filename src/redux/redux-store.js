@@ -4,14 +4,15 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import usersReducer from "./Users-reducer";
 import authReducer from "./auth-reduser";
 import thunkMiddleware from "redux-thunk";
-
+import { reducer as formReducer} from "redux-form";
 
 let reducers = combineReducers({  
 
 allMessages: messageReducer,
 allPosts: postReducer,
 usersPage: usersReducer,
-auth: authReducer
+auth: authReducer,
+form: formReducer
 })
 let store = createStore(reducers, applyMiddleware(thunkMiddleware));
 
