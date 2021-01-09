@@ -11,24 +11,19 @@ let initialState =  {
         { id:2, message:"hi"},  
         { id:3, message:"hi"},  
         { id:4, message:"hi"},    
-      ], 
-      newMessageBody:""};
+      ]
+    };
 
 
 
 const messageReducer = (state = initialState, action)=>{
 
-     if (action.type === 'UPDATE-NEW-MESSAGE-BODY'){
-       let stateCopy = {...state}
-       stateCopy.newMessageBody = action.body
-        return stateCopy;
-       
-      }else if (action.type === 'SEND-MESSAGE'){
+     if (action.type === 'SEND-MESSAGE'){
         let steteCopy = {...state}
-        let body = steteCopy.newMessageBody;
+        let body = action.newMessageBody;
         steteCopy.messagesData = [...state.messagesData]
         steteCopy.messagesData.push({id: 6, message: body});
-        steteCopy.newMessageBody = "";
+        
         return steteCopy;
         
       }

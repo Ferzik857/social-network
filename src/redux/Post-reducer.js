@@ -13,7 +13,6 @@ let initialState =  {
     { id:3, message:"hi",likesCount: 12},  
     { id:4, message:"hi",likesCount: 12},    
   ], 
-  newPostText:"",
 profile: null,
 status:""
 };
@@ -24,7 +23,7 @@ const postReducer = (state = initialState, action)=>{
     if(action.type === 'ADD-POST'){
         let newPost = {
             id: 5,
-            message: state.newPostText,
+            message: action.newPostText,
             likesCount:0
         };
         let stateCopy = {...state};
@@ -33,11 +32,6 @@ const postReducer = (state = initialState, action)=>{
         stateCopy.newPostText = "";
         return stateCopy;
        
-      }
-      if (action.type === 'UPDATE-NEW-POST-TEXT'){
-         let steteCopy = {...state};
-        steteCopy.newPostText = action.newText;
-        return steteCopy;
       }
       if (action.type === SET_USER_PROFILE){
        

@@ -25,8 +25,8 @@ const LoginReduxForm = reduxForm({
 })(LoginForm)
 
 const Login = ()=>{
-    const on = (sss) =>{
-    console.log(sss);    
+    const on = (param) =>{
+    console.log(param);    
     }
    return <div>
     <h1>Login</h1> 

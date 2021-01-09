@@ -16,8 +16,7 @@ let f1 =(store)=>{
 }
 let f2 =(dispatch)=>{
 return {
-  onNewMessageChange: (body)=>{ dispatch({type:'UPDATE-NEW-MESSAGE-BODY', body:body})},
-  onSendMessageClick: ()=>{ dispatch({type:'SEND-MESSAGE'})}
+  onSendMessageClick: (newMessageBody)=>{ dispatch({type:'SEND-MESSAGE', newMessageBody})}
 }
 }
 
