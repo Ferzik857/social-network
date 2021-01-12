@@ -2,10 +2,9 @@ import { connect } from "react-redux";
 import Users from "./Users";
 import React from 'react';
 import Preloader from "../common/Preloader/Preloader";
-import { userAPI } from "../../api/api";
 import { follow, getUsersThunkCreator, setCurrentPage, toggleFollowingInProgress, unfollow } from "../../redux/Users-reducer";
-import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
+import {getUser, getPageSize, getTotalUsersCount, getCurrentPage, getIsFetching, getFollowingInProgress } from "../../redux/user-selectors";
 
 
 
@@ -50,7 +49,7 @@ class UsersApi extends React.Component {
   
 
 
-let f1 = (state)=>{
+/*let f1 = (state)=>{
 return{
     users:state.usersPage.users,
     pageSize:state.usersPage.pageSize,
@@ -59,23 +58,20 @@ return{
     isFetching:state.usersPage.isFetching,
     followingInProgress:state.usersPage.followingInProgress
 }
-}
-/*let f2 = (dispatch)=>{
-    return{
-        follow: (userId)=> ({type:"FOLLOW", userId: userId}),
-        unfollow: (userId)=> ({type:"UNFOLLOW", userId: userId}),
-        setUsers: setUsers,
-        setCurrentPage:(currentPage)=>({type:"SET_CURRENT_PAGE", currentPage: currentPage}),
-       setTotalUsersCount : setTotalUsersCount, 
-       toggleIsFetching: toggleIsFetching, 
-       toggleFollowingInProgress: (isFetching, userId)=>({type:"TOGGLE_IS_FOLLOWING_PROGRESS", isFetching:isFetching,userId:userId}),  
-    getUsersThunkCreator: getUsersThunkCreator
-    }
 }*/
 
+let f1 = (state)=>{
+    return{
+        users:getUser(state),
+        pageSize:getPageSize(state),
+        totalUsersCount:getTotalUsersCount(state),
+        currentPage:getCurrentPage(state),
+        isFetching:getIsFetching(state),
+        followingInProgress:getFollowingInProgress(state)
+    }
+    }
 
 
 export default compose(
     connect(f1,{follow, getUsers: getUsersThunkCreator, setCurrentPage,  toggleFollowingInProgress, unfollow }),
-    
     )(UsersApi)
