@@ -77,5 +77,5 @@ return{
 
 export default compose(
     connect(f1,{follow, getUsers: getUsersThunkCreator, setCurrentPage,  toggleFollowingInProgress, unfollow }),
-    withAuthRedirect
+    
     )(UsersApi)
