@@ -15,12 +15,6 @@ class UsersApi extends React.Component {
     componentDidMount(){
        
         this.props.getUsers(this.props.currentPage, this.props.pageSize);
-        /*this.props.toggleIsFetching(true);
-        userAPI.getUsers(this.props.currentPage,this.props.pageSize).then(data =>{ 
-            this.props.toggleIsFetching(false);
-              this.props.setUsers(data.items);
-              this.props.setTotalUsersCount(data.totalCount);
-          }); */
     }
   
   
@@ -49,16 +43,7 @@ class UsersApi extends React.Component {
   
 
 
-/*let f1 = (state)=>{
-return{
-    users:state.usersPage.users,
-    pageSize:state.usersPage.pageSize,
-    totalUsersCount:state.usersPage.totalUsersCount,
-    currentPage:state.usersPage.currentPage,
-    isFetching:state.usersPage.isFetching,
-    followingInProgress:state.usersPage.followingInProgress
-}
-}*/
+
 
 let f1 = (state)=>{
     return{
