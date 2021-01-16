@@ -15,7 +15,7 @@ const MyPost = React.memo(props => {
   let addPost = (values) => {props.addPost(values.newPostText)};
   
 
-let postsElements = props.PostData.map(e=><Post message={e.message} like={e.likesCount}/>)
+let postsElements = props.PostData.map(e=><Post key={e.id} message={e.message} like={e.likesCount}/>)
     return <div className={a.postsBlock}>
     <h3>My posts</h3>
     <AddNewPostFormRedux onSubmit={addPost}/> 
