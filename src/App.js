@@ -1,6 +1,6 @@
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
-import {Route, withRouter} from 'react-router-dom';
+import {Redirect, Route, Switch, withRouter} from 'react-router-dom';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
@@ -29,6 +29,8 @@ render(){
 <HeaderContainer/>
 <Navbar/>
 <div className="app-warpper-content">
+  <Switch>
+  <Route exact path="/" render= {() => <Redirect to={'/profile'}/>}/>
   <Route path="/login" render={() => <Login />}/>
   <Route path="/Profile/:userId?" render={() => <ProfileCountainer />}/>
   <Route path="/Dialogs" render={() => <DialogsContainer />}/>
@@ -37,7 +39,7 @@ render(){
   <Route path="/Settings" render={Settings}/>
   <Route path="/Friends" render={Friends}/>
   <Route path="/users" render={() => <UsersContainer />}/>
-
+ </Switch>
     </div>
     </div>
    
