@@ -38,7 +38,7 @@ render(){
   <Route path="/Music" render={Music}/>
   <Route path="/Settings" render={Settings}/>
   <Route path="/Friends" render={Friends}/>
-  <Route path="/users" render={() => <UsersContainer />}/>
+  <Route path="/users" render={() => <UsersContainer pageTitle={"title"}/>}/>
  </Switch>
     </div>
     </div>
