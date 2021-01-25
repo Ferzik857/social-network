@@ -1,8 +1,8 @@
-import { connect } from "react-redux";
+import { connect, DefaultRootState } from "react-redux";
 import Users from "./Users";
 import React from 'react';
 import Preloader from "../common/Preloader/Preloader";
-import { follow, getUsersThunkCreator, unfollow, actions } from "../../redux/Users-reducer";
+import { follow, getUsersThunkCreator, unfollow, actions} from "../../redux/Users-reducer";
 import { compose } from "redux";
 import {getUser, getPageSize, getTotalUsersCount, getCurrentPage, getIsFetching, getFollowingInProgress } from "../../redux/user-selectors";
 import { UsersType } from "../../types/types";
@@ -80,5 +80,5 @@ let f1 = (state: AppStateType): MapStatePropsType =>{
 
 
 export default compose(
-    connect<MapStatePropsType, MapDispatchStatePropsType, OwnPropsType, AppStateType>(f1,{follow, unfollow, getUsers: getUsersThunkCreator})
+    connect(f1,{follow, unfollow, getUsers: getUsersThunkCreator })
     )(UsersApi)
