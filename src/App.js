@@ -6,7 +6,7 @@ import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import Friends from './components/Friends/Friends';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
-import UsersContainer from './components/Users/UsersContainer';
+
 import ProfileCountainer from './components/Profile/ProfileCountainer';
 import HeaderContainer from './components/Heder/HeaderContainer';
 import Login from './components/login/login';
@@ -15,6 +15,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { initializeApp } from './redux/app-reducer';
 import Preloader from './components/common/Preloader/Preloader';
+import { UsersPage } from './components/Users/UsersContainer';
 
 
 class App extends Component {
@@ -38,7 +39,7 @@ render(){
   <Route path="/Music" render={Music}/>
   <Route path="/Settings" render={Settings}/>
   <Route path="/Friends" render={Friends}/>
-  <Route path="/users" render={() => <UsersContainer pageTitle={"title"}/>}/>
+  <Route path="/users" render={() => <UsersPage pageTitle={"title"}/>}/>
  </Switch>
     </div>
     </div>
